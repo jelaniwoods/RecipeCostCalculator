@@ -1,0 +1,2 @@
+class ShoplistIngredientsController < ApplicationController
+end
