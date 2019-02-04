@@ -17,12 +17,16 @@ ActiveRecord::Schema.define(version: 2019_02_04_013327) do
 
   create_table "recipe_ingredients", force: :cascade do |t|
     t.integer "recipe_id"
+    t.string "name"
+    t.float "quantity"
+    t.string "units"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "recipes", force: :cascade do |t|
     t.integer "user_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,12 +34,16 @@ ActiveRecord::Schema.define(version: 2019_02_04_013327) do
   create_table "shoplist_ingredients", force: :cascade do |t|
     t.integer "shoplist_id"
     t.float "price"
+    t.string "name"
+    t.float "quantity"
+    t.string "units"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shoplists", force: :cascade do |t|
     t.integer "recipe_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_013327) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "username", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

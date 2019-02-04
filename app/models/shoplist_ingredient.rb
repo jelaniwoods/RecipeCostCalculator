@@ -3,7 +3,10 @@
 # Table name: shoplist_ingredients
 #
 #  id          :bigint(8)        not null, primary key
+#  name        :string
 #  price       :float
+#  quantity    :float
+#  units       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  shoplist_id :integer
