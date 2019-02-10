@@ -1,0 +1,127 @@
+<% was_validated = shoplist_ingredient.errors.any? %>
+
+<% form_html_options = { novalidate: true, class: "mb-3" } %>
+
+<%= form_for(shoplist_ingredient, html: form_html_options) do |f| %>
+  <div class="form-group">
+    <% shoplist_id_class = "form-control" %>
+    <% shoplist_id_was_invalid = shoplist_ingredient.errors.include?(:shoplist_id) %>
+
+    <% if was_validated %>
+      <% if shoplist_id_was_invalid %>
+        <% shoplist_id_class << " is-invalid" %>
+      <% else %>
+        <% shoplist_id_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :shoplist_id %>
+
+    <%= f.number_field :shoplist_id, class: shoplist_id_class, placeholder: "Enter shoplist" %>
+    <% if shoplist_id_was_invalid %>
+      <% shoplist_ingredient.errors.full_messages_for(:shoplist_id).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% price_class = "form-control" %>
+    <% price_was_invalid = shoplist_ingredient.errors.include?(:price) %>
+
+    <% if was_validated %>
+      <% if price_was_invalid %>
+        <% price_class << " is-invalid" %>
+      <% else %>
+        <% price_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :price %>
+
+    <%= f.text_field :price, class: price_class, placeholder: "Enter price" %>
+    <% if price_was_invalid %>
+      <% shoplist_ingredient.errors.full_messages_for(:price).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = shoplist_ingredient.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <% if name_was_invalid %>
+      <% shoplist_ingredient.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% units_class = "form-control" %>
+    <% units_was_invalid = shoplist_ingredient.errors.include?(:units) %>
+
+    <% if was_validated %>
+      <% if units_was_invalid %>
+        <% units_class << " is-invalid" %>
+      <% else %>
+        <% units_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :units %>
+
+    <%= f.text_field :units, class: units_class, placeholder: "Enter units" %>
+    <% if units_was_invalid %>
+      <% shoplist_ingredient.errors.full_messages_for(:units).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <% quantity_class = "form-control" %>
+    <% quantity_was_invalid = shoplist_ingredient.errors.include?(:quantity) %>
+
+    <% if was_validated %>
+      <% if quantity_was_invalid %>
+        <% quantity_class << " is-invalid" %>
+      <% else %>
+        <% quantity_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :quantity %>
+
+    <%= f.text_field :quantity, class: quantity_class, placeholder: "Enter quantity" %>
+    <% if quantity_was_invalid %>
+      <% shoplist_ingredient.errors.full_messages_for(:quantity).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

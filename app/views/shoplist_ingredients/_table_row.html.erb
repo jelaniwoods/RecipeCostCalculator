@@ -1,0 +1,37 @@
+<tr>
+  <td>
+    <%= shoplist_ingredient.shoplist_id %>
+  </td>
+
+  <td>
+    <%= shoplist_ingredient.price %>
+  </td>
+
+  <td>
+    <%= shoplist_ingredient.name %>
+  </td>
+
+  <td>
+    <%= shoplist_ingredient.units %>
+  </td>
+
+  <td>
+    <%= shoplist_ingredient.quantity %>
+  </td>
+
+  <td>
+    <div class="btn-group">
+      <%= link_to shoplist_ingredient, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-search-plus fa-fw"></i>
+      <% end %>
+
+      <%= link_to edit_shoplist_ingredient_url(shoplist_ingredient), class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-edit fa-fw"></i>
+      <% end %>
+
+      <%= link_to shoplist_ingredient, method: :delete, data: { confirm: "Do you really want to delete this shoplist_ingredient?" }, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-trash-alt fa-fw"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

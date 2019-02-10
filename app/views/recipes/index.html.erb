@@ -1,9 +1,73 @@
-<div class="">
-  <% @recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe.id) do %>
-      <div class="m-3">
-        <%= recipe.name %>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1 class="display-4">
+      Recipes
+
+      <%= link_to new_recipe_path, class: "btn btn-lg btn-outline-secondary" do %>
+        <i class="fas fa-plus fa-fw"></i>
+      <% end %>
+    </h1>
+  </div>
+</div>
+
+<!-- Table example -->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              User
+            </th>
+
+            <th>
+              Name
+            </th>
+
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%= render collection: @recipes, partial: "table_row", as: :recipe %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Card deck example -->
+
+<% @recipes.each_slice(3) do |slice| %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card-deck">
+      <%= render collection: slice, partial: "card", as: :recipe %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<!-- List group example -->
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-8">
+    <div class="card">
+      <h1 class="card-header h4 d-flex align-items-center justify-content-between">
+        Recipes
+
+        <%= link_to new_recipe_path, class: "btn btn-sm btn-outline-secondary" do %>
+          <i class="fas fa-plus fa-fw"></i>
+        <% end %>
+      </h1>
+
+      <div class="list-group list-group-flush">
+        <%= render collection: @recipes, partial: "list_item", as: :recipe %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>

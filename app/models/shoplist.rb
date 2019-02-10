@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: shoplists
@@ -10,10 +12,7 @@
 #
 
 class Shoplist < ApplicationRecord
-
   belongs_to :recipe
 
-  has_many :shoplistingredients, :class_name => "ShoplistIngredient", :dependent => :destroy
-
-  has_one :recipe_ingredient, :through => :recipe, :source => :ingredients
+  has_many :ingredients, class_name: 'ShoplistIngredient', dependent: :destroy
 end

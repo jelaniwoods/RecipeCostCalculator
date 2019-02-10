@@ -1,0 +1,33 @@
+<tr>
+  <td>
+    <%= recipe_ingredient.recipe_id %>
+  </td>
+
+  <td>
+    <%= recipe_ingredient.name %>
+  </td>
+
+  <td>
+    <%= recipe_ingredient.units %>
+  </td>
+
+  <td>
+    <%= recipe_ingredient.quantity %>
+  </td>
+
+  <td>
+    <div class="btn-group">
+      <%= link_to recipe_ingredient, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-search-plus fa-fw"></i>
+      <% end %>
+
+      <%= link_to edit_recipe_ingredient_url(recipe_ingredient), class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-edit fa-fw"></i>
+      <% end %>
+
+      <%= link_to recipe_ingredient, method: :delete, data: { confirm: "Do you really want to delete this recipe_ingredient?" }, class: "btn btn-sm btn-outline-secondary" do %>
+        <i class="fas fa-trash-alt fa-fw"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
