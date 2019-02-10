@@ -15,4 +15,10 @@ class Shoplist < ApplicationRecord
   belongs_to :recipe
 
   has_many :ingredients, class_name: 'ShoplistIngredient', dependent: :destroy
+
+
+  def get_unit_cost
+
+  end
+
 end
