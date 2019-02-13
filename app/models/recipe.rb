@@ -17,4 +17,7 @@ class Recipe < ApplicationRecord
   has_one :shoplist, dependent: :destroy
 
   has_many :shoplist_ingredients, through: :ingredients, source: :shoplist_ingredient
+
+
+
 end
