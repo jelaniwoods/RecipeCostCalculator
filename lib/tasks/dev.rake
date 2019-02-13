@@ -7,12 +7,12 @@ namespace :dev do
     RecipeIngredient.destroy_all
     Shoplist.destroy_all
     ShoplistIngredient.destroy_all
-    puts "3 users created"
     User.create([
-      { email: "admin@example.com", password: "password" },
-      { email: "alice@example.com", password: "password"},
-      { email: "bob@example.com", password: "password"},
+      { email: "admin@example.com", password: "password", username: "Admin" },
+      { email: "alice@example.com", password: "password", username: "Alice"},
+      { email: "bob@example.com", password: "password", username: "Bob"},
     ])
+    puts "#{User.all.size} users created"
 
     ingredients = []
     units = []
@@ -25,11 +25,11 @@ namespace :dev do
     end
     recipes = []
     (0..5).each do |n|
-      recipe = Recipe.create(name: Faker::Food.dish)
+      recipe = Recipe.create(name: Faker::Food.dish, user_id: User.last.id)
       recipes.push(recipe)
       shoplist = Shoplist.create(name: recipe.name, recipe_id: recipe.id)
     end
-    (1..Recipe.all.size).each do |n|
+    (Recipe.first.id..Recipe.all.size).each do |n|
       recipe = Recipe.find(n)
       shoplist = recipe.shoplist
       i = ingredients.sample
@@ -37,6 +37,7 @@ namespace :dev do
       u = units.sample
       recipe.ingredients.create(name: i, quantity: q, units: u)
       shoplist.ingredients.create(name: i, quantity: q, units: u)
+      puts "Added one recipe: " + Recipe.all.size
     end
     puts "Added 5 recipes and shoplists"
 
