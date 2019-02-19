@@ -32,11 +32,15 @@ class Shoplist < ApplicationRecord
     converted_recipe = []
     converted_shoplist = []
     self.recipe.ingredients.each do |ingredient|
-      tmp = Unitwise(ingredient.quantity, ingredient.units)
-      converted_recipe
+      temp_ingredient = Unitwise(ingredient.quantity, ingredient.units)
+      converted_ingredient = temp_ingredient.convert_to("cup")
     end
   end
-  
+
+  def build_from_recipe
+
+  end
+
 
 
 
