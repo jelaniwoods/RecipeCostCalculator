@@ -22,6 +22,8 @@ namespace :dev do
       units.push(Faker::Food.measurement)
       ingredients.push(Faker::Food.ingredient)
       quantities.push(rand(1..4)/rand(1..4))
+      puts n
+      puts "." * n
     end
     recipes = []
     (0..5).each do |n|
@@ -29,15 +31,19 @@ namespace :dev do
       recipes.push(recipe)
       shoplist = Shoplist.create(name: recipe.name, recipe_id: recipe.id)
     end
-    (Recipe.first.id..Recipe.all.size).each do |n|
-      recipe = Recipe.find(n)
+    (Recipe.all).each do |recipe|
       shoplist = recipe.shoplist
       i = ingredients.sample
       q = quantities.sample
       u = units.sample
-      recipe.ingredients.create(name: i, quantity: q, units: u)
+      recipe.ingredients.create([
+        {name: ingredients.sample, quantity: quantities.sample, units: units.sample},
+        {name: ingredients.sample, quantity: quantities.sample, units: units.sample},
+        {name: ingredients.sample, quantity: quantities.sample, units: units.sample},
+      ])
       shoplist.ingredients.create(name: i, quantity: q, units: u)
-      puts "Added one recipe: " + Recipe.all.size
+      # puts "Added one recipe: " + Recipe.all.size
+      puts "Ingredients: " + recipe.ingredients.to_s
     end
     puts "Added 5 recipes and shoplists"
 
