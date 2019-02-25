@@ -19,9 +19,10 @@ namespace :dev do
     quantities = []
 
     (0..10).each do |n|
-      units.push(Faker::Food.measurement)
+      measurement = Faker::Food.measurement
+      units.push(measurement.split.last)
       ingredients.push(Faker::Food.ingredient)
-      quantities.push(rand(1..4)/rand(1..4))
+      quantities.push(measurement.split.first)
       puts n
       puts "." * n
     end

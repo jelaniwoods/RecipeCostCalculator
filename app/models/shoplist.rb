@@ -34,6 +34,7 @@ class Shoplist < ApplicationRecord
     self.recipe.ingredients.each do |ingredient|
       temp_ingredient = Unitwise(ingredient.quantity, ingredient.units)
       converted_ingredient = temp_ingredient.convert_to("cup")
+      puts converted_ingredient
     end
   end
 
