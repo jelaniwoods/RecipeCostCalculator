@@ -12,7 +12,6 @@
 #
 
 class Shoplist < ApplicationRecord
-  include Convert
   belongs_to :recipe
 
   has_many :ingredients, class_name: 'ShoplistIngredient', dependent: :destroy
@@ -32,6 +31,9 @@ class Shoplist < ApplicationRecord
   def get_unit_cost
     converted_recipe = []
     converted_shoplist = []
+    recipe.ingredients.each do |i|
+      i.to_cups
+    end
     self.recipe.ingredients.each do |ingredient|
       temp_ingredient = Unitwise(ingredient.quantity, ingredient.units)
       converted_ingredient = temp_ingredient.convert_to("cup")

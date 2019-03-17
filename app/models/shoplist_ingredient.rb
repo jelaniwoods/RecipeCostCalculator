@@ -15,6 +15,7 @@
 #
 
 class ShoplistIngredient < ApplicationRecord
+  include Convert
   belongs_to :shoplist
 
   has_one :recipe_ingredient, through: :shoplist, source: :recipe_ingredient
