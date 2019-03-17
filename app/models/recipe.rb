@@ -12,8 +12,7 @@
 #
 
 class Recipe < ApplicationRecord
-  include Convert
-  
+
   belongs_to :user
   has_many :ingredients, class_name: 'RecipeIngredient', dependent: :destroy
   has_one :shoplist, dependent: :destroy

@@ -12,6 +12,7 @@
 #
 
 class Shoplist < ApplicationRecord
+  include Convert
   belongs_to :recipe
 
   has_many :ingredients, class_name: 'ShoplistIngredient', dependent: :destroy
